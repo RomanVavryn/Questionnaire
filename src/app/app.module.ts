@@ -8,6 +8,7 @@ import { CreateQuestionPageComponent } from './pages/create-question-page/create
 import { QuestionEditPageComponent } from './pages/question-edit-page/question-edit-page.component';
 import { ListOfQuestionsPageComponent } from './pages/list-of-questions-page/list-of-questions-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     CreateQuestionPageComponent,
     QuestionEditPageComponent,
     ListOfQuestionsPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
