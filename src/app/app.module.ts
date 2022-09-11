@@ -7,7 +7,6 @@ import { QuestionManagementPageComponent } from './pages/question-management-pag
 import { CreateQuestionPageComponent } from './pages/create-question-page/create-question-page.component';
 import { QuestionEditPageComponent } from './pages/question-edit-page/question-edit-page.component';
 import { ListOfQuestionsPageComponent } from './pages/list-of-questions-page/list-of-questions-page.component';
-import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
@@ -19,7 +18,6 @@ import {MatButtonModule} from "@angular/material/button";
     CreateQuestionPageComponent,
     QuestionEditPageComponent,
     ListOfQuestionsPageComponent,
-    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
