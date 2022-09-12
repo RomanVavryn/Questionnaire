@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>
+  New question!
+</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field appearance="fill">
+    <mat-label>Question</mat-label>
+    <input matInput [(ngModel)]="newQuestion.title" type="text">
+  </mat-form-field>
+  <br>
+  <h3>Question type:</h3>
+  <mat-radio-group (change)="onChangeHandler($event)" class="radio-group"  aria-label="Select an question types">
+    <mat-radio-button
+      *ngFor=" let qType of questionTypes | enumToArray" [value]="qType"
+      class="radio-button">
+      {{qType}}
+    </mat-radio-button>
+  </mat-radio-group>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="null">Cancel</button>
+  <button mat-button [mat-dialog-close]="newQuestion"
+          [disabled]="newQuestion.type === null || newQuestion.title === ''">
+    Create
+  </button>
+</mat-dialog-actions>

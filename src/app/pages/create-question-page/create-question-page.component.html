@@ -1,1 +1,9 @@
-<p>create-question-page works!</p>
+<mat-toolbar>
+  <h2>{{title}}</h2>
+  <nav class="nav">
+    <a mat-raised-button routerLink="/management">QuestionInterface Management Page</a>
+  </nav>
+</mat-toolbar>
+<div class="page">
+  <button mat-raised-button color="primary" (click)="createQuestion()" class="button-margin">Create question</button>
+</div>
