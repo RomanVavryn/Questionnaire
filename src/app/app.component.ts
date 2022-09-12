@@ -9,7 +9,6 @@ import {Subscription} from "rxjs";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title: string = 'Questionnaire Test Task';
   routerSub!: Subscription;
 
   constructor(private router: Router, private storageService: StorageService) {

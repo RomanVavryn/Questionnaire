@@ -1,11 +1,10 @@
-<mat-toolbar>
-  <h1>{{title}}</h1>
-  <nav class="nav">
-    <a mat-button color="primary" routerLink="/list" routerLinkActive="active">List</a>
-    <a mat-button color="primary" routerLink="/management" routerLinkActive="active">Management</a>
-    <a mat-button color="primary" routerLink="/create" routerLinkActive="active">Create</a>
-    <a mat-button color="primary" routerLink="/edit" routerLinkActive="active">Edit</a>
-  </nav>
-</mat-toolbar>
-<router-outlet></router-outlet>
+  <mat-toolbar>
+    <nav class="nav">
+      <a mat-button color="primary" routerLink="/list" routerLinkActive="active">List</a>
+      <a mat-button color="primary" routerLink="/management" routerLinkActive="active">Management</a>
+      <a mat-button color="primary" routerLink="/create" routerLinkActive="active">Create</a>
+      <a mat-button color="primary" routerLink="/edit" routerLinkActive="active">Edit</a>
+    </nav>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
 
