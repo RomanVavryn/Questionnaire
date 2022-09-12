@@ -32,7 +32,7 @@ export class CreateQuestionPageComponent {
         this.router.navigate(['/management']).then(r => {
           console.log('redirected ', r);
           this._snackBar.open('Question was created!', 'message', {duration: 3500});
-        })
+        });
       }
     });
 

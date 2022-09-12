@@ -18,7 +18,7 @@
 
       <div class="flex-grow">{{qItem.title}}</div>
 
-      <button mat-raised-button class="sm-margin">Edit</button>
+      <button mat-raised-button class="sm-margin" (click)="editQuestion(qItem)">Edit</button>
       <button mat-raised-button class="sm-margin" color="warn" (click)="deleteQuestion(qItem)">Delete</button>
 
       <mat-divider></mat-divider>

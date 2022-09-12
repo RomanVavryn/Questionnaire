@@ -12,11 +12,7 @@ export class StorageService {
   // Question
   getQuestions(): QuestionInterface[] | null {
     const questionsString = localStorage.getItem('questions');
-    if (questionsString) {
-      return JSON.parse(questionsString);
-    } else {
-      return null;
-    }
+    return questionsString ? JSON.parse(questionsString) : null;
   }
 
   addNewQuestion(question: QuestionInterface): void {
@@ -35,6 +31,20 @@ export class StorageService {
 
   deleteQuestions(): void {
     localStorage.removeItem('questions');
+  }
+
+  // question edit
+  setItemToEdit(qItem: QuestionInterface): void {
+    localStorage.setItem('itemToEdit', JSON.stringify(qItem));
+  }
+
+  getItemToEdit(): QuestionInterface | null  {
+    const item = localStorage.getItem('itemToEdit');
+    return item ? JSON.parse(item) : null;
+  }
+
+  clearItemToEdit(): void {
+    localStorage.removeItem('itemToEdit');
   }
 
   // Route

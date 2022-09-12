@@ -1,1 +1,14 @@
-<p>question-edit-page works!</p>
+<mat-toolbar>
+  <h2>{{title}}</h2>
+  <nav class="nav">
+    <a mat-raised-button routerLink="/management">Question Management</a>
+  </nav>
+</mat-toolbar>
+<div class="page">
+  <div *ngIf="editItem else noItemToEdit">
+    {{editItem | json}}
+  </div>
+  <ng-template #noItemToEdit>
+    <h2>There are no question to edit!</h2>
+  </ng-template>
+</div>
