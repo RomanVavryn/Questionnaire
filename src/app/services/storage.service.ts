@@ -12,7 +12,6 @@ export class StorageService {
   // Question
   getQuestions(): QuestionInterface[] | null {
     const questionsString = localStorage.getItem('questions');
-    console.log('questionsString ', questionsString)
     if (questionsString) {
       return JSON.parse(questionsString);
     } else {
@@ -21,11 +20,12 @@ export class StorageService {
   }
 
   addNewQuestion(question: QuestionInterface): void {
-    const questions = this.getQuestions();
+    const questions: QuestionInterface[] | null = this.getQuestions();
     if (questions) {
-      questions.unshift(question);
+      const newQuestionArray: QuestionInterface[] = [question, ...questions];
+      localStorage.setItem('questions', JSON.stringify(newQuestionArray));
     } else {
-      localStorage.setItem('questions', JSON.stringify(question));
+      localStorage.setItem('questions', JSON.stringify([question]));
     }
   }
 
