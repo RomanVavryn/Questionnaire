@@ -17,6 +17,8 @@ import {FormsModule} from "@angular/forms";
 import { EnumToArrayPipe } from './pipes/enumToArray.pipe';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatListModule} from "@angular/material/list";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import {MatInputModule} from "@angular/material/input";
     MatRadioModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

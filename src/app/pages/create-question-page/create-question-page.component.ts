@@ -4,6 +4,8 @@ import {QuestionCreateTypeComponent} from "./components/question-create-type/que
 import {take} from "rxjs";
 import {QuestionInterface} from "../../types/question.interface";
 import {StorageService} from "../../services/storage.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-create-question-page',
@@ -13,7 +15,12 @@ import {StorageService} from "../../services/storage.service";
 export class CreateQuestionPageComponent {
   title: string = 'Create question page';
 
-  constructor( public dialog: MatDialog, private storageService: StorageService) { }
+  constructor(
+    public dialog: MatDialog,
+    private storageService: StorageService,
+    private router: Router,
+    private _snackBar: MatSnackBar,
+  ) { }
 
   createQuestion(): void {
     const dialogRef: MatDialogRef<QuestionCreateTypeComponent> = this.dialog.open(QuestionCreateTypeComponent);
@@ -22,6 +29,10 @@ export class CreateQuestionPageComponent {
       if (newQuestion) {
         newQuestion.createDate = this.getCurrentTime();
         this.storageService.addNewQuestion(newQuestion);
+        this.router.navigate(['/management']).then(r => {
+          console.log('redirected ', r);
+          this._snackBar.open('Question was created!', 'message', {duration: 3500});
+        })
       }
     });
 
