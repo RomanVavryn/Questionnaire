@@ -13,7 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./create-question-page.component.scss']
 })
 export class CreateQuestionPageComponent {
-  title: string = 'Create question page';
+  title: string = 'Create question';
 
   constructor(
     public dialog: MatDialog,

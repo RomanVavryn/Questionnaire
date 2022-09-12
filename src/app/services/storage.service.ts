@@ -21,12 +21,20 @@ export class StorageService {
 
   addNewQuestion(question: QuestionInterface): void {
     const questions: QuestionInterface[] | null = this.getQuestions();
-    if (questions) {
+    if (questions?.length) {
       const newQuestionArray: QuestionInterface[] = [question, ...questions];
       localStorage.setItem('questions', JSON.stringify(newQuestionArray));
     } else {
       localStorage.setItem('questions', JSON.stringify([question]));
     }
+  }
+
+  saveQuestions(questions: QuestionInterface[]): void {
+    localStorage.setItem('questions', JSON.stringify(questions));
+  }
+
+  deleteQuestions(): void {
+    localStorage.removeItem('questions');
   }
 
   // Route

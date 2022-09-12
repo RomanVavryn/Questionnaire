@@ -1,1 +1,32 @@
-<p>question-management-page works!</p>
+<mat-toolbar>
+
+  <h2>{{title}}</h2>
+
+  <nav class="nav">
+    <a mat-raised-button routerLink="/create">Create question</a>
+  </nav>
+
+</mat-toolbar>
+
+<div class="page">
+
+  <mat-list *ngIf="questionList else noQuestions" role="list">
+    <mat-list-item *ngFor="let qItem of questionList" role="listitem">
+
+      <div mat-line>Type: {{qItem.type}}</div>
+      <div mat-line>Date: {{qItem.createDate | date : 'medium'}} </div>
+
+      <div class="flex-grow">{{qItem.title}}</div>
+
+      <button mat-raised-button class="sm-margin">Edit</button>
+      <button mat-raised-button class="sm-margin" color="warn" (click)="deleteQuestion(qItem)">Delete</button>
+
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+
+  <ng-template #noQuestions>
+    <h2>There are no question!</h2>
+  </ng-template>
+
+</div>
