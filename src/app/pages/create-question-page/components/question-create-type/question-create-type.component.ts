@@ -14,6 +14,8 @@ export class QuestionCreateTypeComponent {
     title: '',
     type: null,
     createDate: '',
+    isAnswered: false,
+    answeredDate: '',
   }
 
   onChangeHandler(event: MatRadioChange) {

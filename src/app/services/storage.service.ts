@@ -18,7 +18,7 @@ export class StorageService {
   addNewQuestion(question: QuestionInterface): void {
     const questions: QuestionInterface[] | null = this.getQuestions();
     if (questions?.length) {
-      const newQuestionArray: QuestionInterface[] = [question, ...questions];
+      const newQuestionArray: QuestionInterface[] = [...questions, question];
       localStorage.setItem('questions', JSON.stringify(newQuestionArray));
     } else {
       localStorage.setItem('questions', JSON.stringify([question]));

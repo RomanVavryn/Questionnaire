@@ -20,6 +20,10 @@ import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatChipsModule} from "@angular/material/chips";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatCardModule} from "@angular/material/card";
+import { SortPipe } from './pipes/sort.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,22 +34,26 @@ import {MatChipsModule} from "@angular/material/chips";
     ListOfQuestionsPageComponent,
     QuestionCreateTypeComponent,
     EnumToArrayPipe,
+    SortPipe,
+    FilterPipe,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatRadioModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatChipsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatRadioModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatListModule,
+        MatSnackBarModule,
+        MatChipsModule,
+        MatGridListModule,
+        MatCardModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -24,14 +24,7 @@ export class QuestionManagementPageComponent implements OnInit {
   }
 
   private initQuestionList(): void {
-    const questions: QuestionInterface[] | null = this.storageService.getQuestions();
-    if (questions?.length) {
-      this.questionList = questions.sort(
-        (a: QuestionInterface, b: QuestionInterface) => Date.parse(b.createDate) - Date.parse(a.createDate)
-      )
-    } else {
-      this.questionList = null;
-    }
+    this.questionList = this.storageService.getQuestions();
   }
 
   deleteQuestion(qItem: QuestionInterface): void {

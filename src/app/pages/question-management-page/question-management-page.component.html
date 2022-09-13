@@ -11,7 +11,7 @@
 <div class="page">
 
   <mat-list *ngIf="questionList else noQuestions" role="list">
-    <mat-list-item *ngFor="let qItem of questionList" role="listitem">
+    <mat-list-item *ngFor="let qItem of questionList | sort" role="listitem">
 
       <div mat-line>Type: {{qItem.type}}</div>
       <div mat-line>Date: {{qItem.createDate | date : 'medium'}} </div>
