@@ -1,0 +1,14 @@
+<mat-form-field appearance="fill">
+  <mat-label>Answer option</mat-label>
+  <input matInput (keyup.enter)="addAnswerOptions(answerOption)" [(ngModel)]="answerOption" type="text">
+</mat-form-field>
+<br>
+<button mat-stroked-button (click)="addAnswerOptions(answerOption)" class="sm-margin">Add answer option</button>
+
+<h4>Answer options:</h4>
+<mat-list *ngIf="answerOptions" role="list">
+  <mat-list-item *ngFor="let option of answerOptions" role="listitem">
+    <button mat-stroked-button (click)="deleteAnswerOptions(option)" class="sm-margin">Delete:</button>
+    {{option}}
+  </mat-list-item>
+</mat-list>

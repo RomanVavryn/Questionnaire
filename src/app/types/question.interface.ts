@@ -6,4 +6,6 @@ export interface QuestionInterface {
   isAnswered: boolean;
   createDate: string;
   answeredDate: string;
+  answerOptions: string[];
+  userAnswer: string;
 }

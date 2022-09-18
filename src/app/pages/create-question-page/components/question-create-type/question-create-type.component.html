@@ -2,24 +2,50 @@
   New question!
 </h2>
 <mat-dialog-content class="mat-typography">
+
   <mat-form-field appearance="fill">
     <mat-label>Question</mat-label>
     <input matInput [(ngModel)]="newQuestion.title" type="text">
   </mat-form-field>
   <br>
   <h3>Question type:</h3>
-  <mat-radio-group (change)="onChangeHandler($event)" class="radio-group"  aria-label="Select an question types">
+  <mat-radio-group (change)="onChangeHandler($event)" class="radio-group" aria-label="Select an question types">
     <mat-radio-button
       *ngFor=" let qType of questionTypes | enumToArray" [value]="qType"
-      class="radio-button">
+      class="sm-margin">
       {{qType}}
     </mat-radio-button>
   </mat-radio-group>
+
+  <div [ngSwitch]="newQuestion.type">
+    <div *ngSwitchCase="'Single'">
+      <app-create-options
+        [answerOptions]="newQuestion.answerOptions"
+        (addOption)="addNewOption($event)"
+        (deleteOption)="deleteOption($event)">
+      </app-create-options>
+    </div>
+    <div *ngSwitchCase="'Multiple'">
+      <app-create-options
+        [answerOptions]="newQuestion.answerOptions"
+        (addOption)="addNewOption($event)"
+        (deleteOption)="deleteOption($event)">
+      </app-create-options>
+    </div>
+  </div>
+
 </mat-dialog-content>
+
 <mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="null">Cancel</button>
-  <button mat-button [mat-dialog-close]="newQuestion"
-          [disabled]="newQuestion.type === null || newQuestion.title === ''">
+  <button
+    mat-button
+    [mat-dialog-close]="null">
+    Cancel
+  </button>
+  <button
+    mat-button
+    [mat-dialog-close]="newQuestion"
+    [disabled]="newQuestion.type === null || newQuestion.title === '' || newQuestion.type.toString() !== 'Open' && newQuestion.answerOptions.length < 2">
     Create
   </button>
 </mat-dialog-actions>

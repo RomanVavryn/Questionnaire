@@ -16,10 +16,19 @@ export class QuestionCreateTypeComponent {
     createDate: '',
     isAnswered: false,
     answeredDate: '',
+    answerOptions: [],
+    userAnswer: '',
   }
 
   onChangeHandler(event: MatRadioChange) {
     this.newQuestion.type = event.value;
   }
 
+  addNewOption(option: string) {
+    this.newQuestion.answerOptions.push(option)
+  }
+
+  deleteOption(option: string) {
+    this.newQuestion.answerOptions = this.newQuestion.answerOptions.filter(value => value !== option);
+  }
 }

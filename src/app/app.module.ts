@@ -24,6 +24,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 import { SortPipe } from './pipes/sort.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { CreateOptionsComponent } from './pages/create-question-page/components/create-options/create-options.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     EnumToArrayPipe,
     SortPipe,
     FilterPipe,
+    CreateOptionsComponent,
   ],
     imports: [
         BrowserModule,
