@@ -6,9 +6,51 @@
 </mat-toolbar>
 <div class="page">
   <div *ngIf="editItem else noItemToEdit">
-    {{editItem | json}}
+
+    <mat-form-field appearance="fill">
+      <mat-label>Question</mat-label>
+      <input matInput [(ngModel)]="editItem.title" type="text">
+    </mat-form-field>
+    <br>
+    <h3>Question type:</h3>
+    <mat-radio-group (change)="onChangeHandler($event)" class="radio-group" aria-label="Select an question types">
+      <mat-radio-button
+        *ngFor=" let qType of questionTypes | enumToArray" [value]="qType"
+        [checked]="editItem?.type?.toString() === qType"
+        class="sm-margin">
+        {{qType}}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <div [ngSwitch]="editItem.type">
+      <div *ngSwitchCase="'Single'">
+        <app-create-options
+          [answerOptions]="editItem.answerOptions"
+          (addOption)="addNewOption($event)"
+          (deleteOption)="deleteOption($event)">
+        </app-create-options>
+      </div>
+      <div *ngSwitchCase="'Multiple'">
+        <app-create-options
+          [answerOptions]="editItem.answerOptions"
+          (addOption)="addNewOption($event)"
+          (deleteOption)="deleteOption($event)">
+        </app-create-options>
+      </div>
+    </div>
+
   </div>
   <ng-template #noItemToEdit>
     <h2>There are no question to edit!</h2>
   </ng-template>
+
+  <button
+    mat-raised-button
+    color="primary"
+    *ngIf="editItem"
+    [mat-dialog-close]="editItem"
+    (click)="saveChanges()"
+    [disabled]="editItem?.type === null || editItem?.title === '' || editItem?.type?.toString() !== 'Open' && editItem.answerOptions.length < 2">
+    Save Changes
+  </button>
 </div>
