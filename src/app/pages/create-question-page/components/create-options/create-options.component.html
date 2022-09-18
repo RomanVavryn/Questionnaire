@@ -6,9 +6,9 @@
 <button mat-stroked-button (click)="addAnswerOptions(answerOption)" class="sm-margin">Add answer option</button>
 
 <h4>Answer options:</h4>
-<mat-list *ngIf="answerOptions" role="list">
+<mat-list *ngIf="answerOptions?.length" role="list">
   <mat-list-item *ngFor="let option of answerOptions" role="listitem">
-    <button mat-stroked-button (click)="deleteAnswerOptions(option)" class="sm-margin">Delete:</button>
-    {{option}}
+    <button mat-stroked-button (click)="deleteAnswerOptions(option.option)" class="sm-margin">Delete:</button>
+    {{option.option}}
   </mat-list-item>
 </mat-list>

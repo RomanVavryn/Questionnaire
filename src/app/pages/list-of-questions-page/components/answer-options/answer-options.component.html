@@ -1,0 +1,59 @@
+<div [ngSwitch]="item.type">
+  <div *ngSwitchCase="'Single'">
+    <mat-radio-group
+      (change)="onRadioChangeHandle($event)"
+      class="radio-group"
+      aria-label="Select an question types">
+      <mat-radio-button
+        *ngFor=" let option of item.answerOptions"
+        [value]="option.option"
+        [checked]="option.checked"
+        [disabled]="item.isAnswered"
+        class="sm-margin ">
+        {{option.option}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div *ngSwitchCase="'Multiple'">
+    <div *ngFor="let option of item.answerOptions">
+      <mat-checkbox
+        [(ngModel)]="option.checked"
+        [checked]="option.checked"
+        [disabled]="item.isAnswered"
+        (change)="onCheckBoxChangeHandle()">
+        {{option.option}}
+      </mat-checkbox>
+    </div>
+  </div>
+  <div *ngSwitchCase="'Open'">
+    <mat-form-field appearance="fill">
+      <mat-label>Answer</mat-label>
+      <textarea
+        [(ngModel)]="item.userAnswer"
+        (input)="onTextAreaInputHandle()"
+        [value]="item.userAnswer"
+        [readonly]="item.isAnswered"
+        matInput
+        cdkTextareaAutosize
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div *ngSwitchDefault>
+    <h3>Unknown question type</h3>
+  </div>
+</div>
+<button
+  mat-raised-button
+  color="primary"
+  *ngIf="!item.isAnswered"
+  [disabled]="!item.canAnswer"
+  (click)="saveAnswer()">
+  Answer
+</button>
+<button
+  mat-raised-button
+  color="warn"
+  *ngIf="item.isAnswered"
+  (click)="unAnswerQuestion()">
+  unAnswer
+</button>

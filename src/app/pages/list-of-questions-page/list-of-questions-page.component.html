@@ -1,1 +1,53 @@
-<p>list-of-questions-page works!</p>
+<div class="wrapper">
+  <mat-toolbar>
+    <h2>{{title}}</h2>
+  </mat-toolbar>
+
+  <div class="list-wrapper">
+    <div class="list">
+
+      <div class="list-item">
+        <h3>Unanswered questions</h3>
+        <div *ngIf="questions">
+          <mat-card
+            class="card"
+            *ngFor="let qItem of questions | filter | sort">
+            <mat-card-title>{{qItem.title}}</mat-card-title>
+            <mat-card-content *ngIf="qItem.type else noqType">
+              <app-answer-options
+                [item]="qItem"
+                (update)="getQuestions()">
+              </app-answer-options>
+            </mat-card-content>
+            <ng-template #noqType>
+              <p>ERROR: There are no question type!</p>
+            </ng-template>
+          </mat-card>
+        </div>
+      </div>
+
+      <mat-divider [vertical]="true"></mat-divider>
+
+      <div class="list-item">
+        <h3>Answered questions</h3>
+        <div *ngIf="questions">
+          <mat-card
+            class="card"
+            *ngFor="let qItem of questions | filter : 'answered' | sort : 'answered'">
+            <mat-card-title>{{qItem.title}}</mat-card-title>
+            <mat-card-content>
+              <app-answer-options
+                [item]="qItem"
+                (update)="getQuestions()">
+              </app-answer-options>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+

@@ -6,6 +6,7 @@ import {QuestionInterface} from "../../types/question.interface";
 import {StorageService} from "../../services/storage.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {DateService} from "../../services/date.service";
 
 @Component({
   selector: 'app-create-question-page',
@@ -18,6 +19,7 @@ export class CreateQuestionPageComponent {
   constructor(
     public dialog: MatDialog,
     private storageService: StorageService,
+    private dateService: DateService,
     private router: Router,
     private _snackBar: MatSnackBar,
   ) { }
@@ -27,7 +29,7 @@ export class CreateQuestionPageComponent {
 
     dialogRef.afterClosed().pipe(take(1)).subscribe((newQuestion: QuestionInterface) => {
       if (newQuestion) {
-        newQuestion.createDate = this.getCurrentTime();
+        newQuestion.createDate = this.dateService.getCurrentTime();
         this.storageService.addNewQuestion(newQuestion);
         this.router.navigate(['/management']).then(r => {
           console.log('redirected ', r);
@@ -36,13 +38,6 @@ export class CreateQuestionPageComponent {
       }
     });
 
-  }
-
-  private getCurrentTime(): string {
-    const today: Date = new Date();
-    const date: string = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    const time: string = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    return date + ' ' + time;
   }
 
 }

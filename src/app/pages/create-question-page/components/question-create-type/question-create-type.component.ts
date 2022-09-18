@@ -15,6 +15,7 @@ export class QuestionCreateTypeComponent {
     type: null,
     createDate: '',
     isAnswered: false,
+    canAnswer: false,
     answeredDate: '',
     answerOptions: [],
     userAnswer: '',
@@ -25,10 +26,14 @@ export class QuestionCreateTypeComponent {
   }
 
   addNewOption(option: string) {
-    this.newQuestion.answerOptions.push(option)
+    if (this.newQuestion.type === QuestionTypesEnum.Open) {
+      this.newQuestion.answerOptions.push({option})
+    } else {
+      this.newQuestion.answerOptions.push({option , checked: false})
+    }
   }
 
   deleteOption(option: string) {
-    this.newQuestion.answerOptions = this.newQuestion.answerOptions.filter(value => value !== option);
+    this.newQuestion.answerOptions = this.newQuestion.answerOptions.filter(value => value.option !== option);
   }
 }
